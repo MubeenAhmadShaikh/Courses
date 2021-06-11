@@ -1,0 +1,41 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Comfortaa', cursive;
+}
+.navbar-brand{
+	height: 60px;
+	font-size: 30px;
+	
+}
+.content{
+	background-color: #17202A;
+	margin-top: 20px;
+	text-align: justify;
+  	padding: 0 20px 0 20px;
+}
+.content p{
+	font-weight: 400;
+}
+.row{
+	margin: 20px 5px 0 5px;
+}
+.container{
+	margin-left: 0;
+	margin-right: 0;
+	max-width: 100%;
+}
+.ext-div{
+	background-color:#17202A ;
+	padding: 20px;
+	text-align: justify;
+}
+@media (max-width:767px){
+	.container{
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+}
+
