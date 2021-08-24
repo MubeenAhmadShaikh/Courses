@@ -234,6 +234,101 @@ function rpsFrontEnd(humanImageChoice,botImageChoice,finalMessage){
 
 }
 
+// Challenge 4 : Changing colors of buttons
+
+var all_button= document.getElementsByTagName('button');
+console.log(all_button);
+
+var copyAllButtons = [];
+
+for(let i=0;i<all_button.length;i++){
+    copyAllButtons.push(all_button[i].classList[1]);0
+};
+
+console.log(copyAllButtons);
+
+
+
+function randomIntClr(){
+    return Math.floor(Math.random() * 4);
+};
+
+function randomColor(number){
+    return ['red','green','yellow','blue'][number];
+};
+
+function buttonColorChange(btnChoice){
+    if(btnChoice.value === 'red'){
+        buttonsToRed();
+    }
+    else if(btnChoice.value === 'green'){
+        buttonsToGreen();
+    }
+    else if(btnChoice.value === 'blue'){
+        buttonsToBlue();
+    }
+    else if(btnChoice.value === 'yellow'){
+        buttonsToYellow();
+    }
+    else if(btnChoice.value === 'random'){
+        var color=randomColor(randomIntClr());
+        changeToRandomColor(color);
+        console.log(color);
+    }
+    else{
+        reset();
+    }
+}
+
+// Random Color
+function changeToRandomColor(color){
+    let colors= ['btn-danger','btn-success','btn-warning','btn-primary']
+    
+    for(let i=0;i<all_button.length;i++){
+        let randomInt=Math.floor(Math.random() * 4);
+        
+        all_button[i].classList.remove(all_button[i].classList[1]);
+        all_button[i].classList.add(colors[randomInt]);
+        
+    }
+}
+// Change the button to Green
+function buttonsToGreen(){
+    for(let i=0;i<all_button.length;i++){
+        all_button[i].classList.remove(all_button[i].classList[1]);
+        all_button[i].classList.add('btn-success');
+    }
+
+}
+// Change the button to Red
+function buttonsToRed(){
+    for (let i = 0; i<all_button.length; i++) {
+      all_button[i].classList.remove(all_button[i].classList[1]);
+      all_button[i].classList.add('btn-danger');
+    }
+}
+// Change the button to Blue
+function buttonsToBlue(){
+    for(let i=0;i<all_button.length;i++){
+        all_button[i].classList.remove(all_button[i].classList[1]);
+        all_button[i].classList.add('btn-primary');
+    }
+}
+// Change the button to Yellow
+function buttonsToYellow(){
+    for(let i=0;i<all_button.length;i++){
+        all_button[i].classList.remove(all_button[i].classList[1]);
+        all_button[i].classList.add('btn-warning');
+    }
+}
+// Reset the color
+function reset(){
+    for(let i=0;i<all_button.length;i++){
+        
+        all_button[i].classList.remove(all_button[i].classList[1]);
+        all_button[i].classList.add(copyAllButtons[i]);
+    }
+}
 
 
 
