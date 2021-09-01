@@ -15,7 +15,7 @@ function reset(){
     document.getElementById('ageInDays').remove();
 }
 
-
+// Challenge 2 Generate Cats
 function generate(){
     var img=document.createElement('img');
     img.src='http://thecatapi.com/api/images/get?format=src&type=gif&size=small';
@@ -237,7 +237,7 @@ function rpsFrontEnd(humanImageChoice,botImageChoice,finalMessage){
 // Challenge 4 : Changing colors of buttons
 
 var all_button= document.getElementsByTagName('button');
-console.log(all_button);
+
 
 var copyAllButtons = [];
 
@@ -245,7 +245,7 @@ for(let i=0;i<all_button.length;i++){
     copyAllButtons.push(all_button[i].classList[1]);0
 };
 
-console.log(copyAllButtons);
+
 
 
 
@@ -330,5 +330,107 @@ function reset(){
     }
 }
 
+// Blackjack Challenge 5
+
+let BlackJackGame = {
+    'you':{'scoreSpan' : '#your-result','div':'#your-box','score':0},
+    'dealer':{'scoreSpan' : '#dealer-result','div':'#dealer-box','score':0},
+    'cards' : ['2','3','4','5','6','7','8','9','10','K','Q','J','A'],
+    'cardsMap' : {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'K':10,'Q':10,'J':10,'A':[1,11]},
+};
+
+const YOU = BlackJackGame['you'];
+const DEALER = BlackJackGame['dealer'];
+
+const hitSound=new Audio('static/sounds/swish.m4a');
+
+document.querySelector('#hit-button').addEventListener('click',blackjackHit);
+document.querySelector('#stand-button').addEventListener('click',blackjackStand);
+document.querySelector('#deal-button').addEventListener('click',blackjackDeal);
+
+
+function randomCards(){
+    let cardIndex=Math.floor(Math.random() * 13);
+    return BlackJackGame['cards'][cardIndex];
+};
+
+//How I tried generating random card images
+/* function randomImage(){
+    let cards=randomCards();
+    let src="static/images/"+cards+".png";
+    return src;
+};*/
+
+function blackjackHit(){
+    let cards= randomCards();
+    showCard(cards,YOU);
+    updateScore(cards,YOU);
+    showScore(YOU);  
+};
+
+function blackjackStand(){
+    
+};
+
+
+function showCard(cards,activePlayer){
+    if(activePlayer['score'] <= 21){
+        let cardImage=document.createElement('img');
+        //String Templating
+        cardImage.src=`static/images/${cards}.png`;
+        // cardImage.src=randomImage();
+        document.querySelector(activePlayer['div']).appendChild(cardImage);
+        hitSound.play();  
+    }
+};
+
+
+function updateScore(cards, activePlayer){
+
+    if(cards === 'A'){
+        // If Adding 11 keeps the score below 21 then add 11 or else add 1
+            if(activePlayer['score'] + BlackJackGame['cardsMap'][cards][1] <= 21){
+                activePlayer['score'] += BlackJackGame['cardsMap'][cards][1];        
+            }  
+            else{
+                activePlayer['score'] += BlackJackGame['cardsMap'][cards][0];
+            }
+    }
+    else{    
+        activePlayer['score'] += BlackJackGame['cardsMap'][cards];
+        
+    }
+};
+
+function showScore(activePlayer){
+    if(activePlayer['score'] > 21){
+        document.querySelector(activePlayer['scoreSpan']).textContent = 'BUSTED!';
+        document.querySelector(activePlayer['scoreSpan']).style.color = 'red';
+    }
+    else{
+        document.querySelector(activePlayer['scoreSpan']).textContent=activePlayer['score'];
+    }
+}
+
+
+function blackjackDeal(){
+    let yourImages= document.querySelector('#your-box').querySelectorAll('img');
+    let dealerImages= document.querySelector('#dealer-box').querySelectorAll('img');
+    
+    for(i=0; i<yourImages.length; i++){
+        yourImages[i].remove();
+    }
+    for(i=0; i<dealerImages.length; i++){
+        dealerImages[i].remove();
+    }
+
+    YOU['score'] = 0;
+    DEALER['score'] = 0;
+
+    document.querySelector(YOU['scoreSpan']).textContent = 0;
+    document.querySelector(YOU['scoreSpan']).style.color='white'
+    document.querySelector(DEALER['scoreSpan']).textContent = 0;
+    document.querySelector(DEALER['scoreSpan']).style.color='white'
+}
 
 

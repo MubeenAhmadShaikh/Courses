@@ -1,26 +1,54 @@
 .container{
-    width: 90%;
+    width: 75%;
     border: 2px solid #000;
     margin: 0 auto;
-    width: 80%;
     text-align: center;
 }
 
-.flex-row{
+.flex-rw, .flex-row1,.flex-row2, .flex-row3{
     display: flex;
+    border: 2px solid #000;
     flex-direction: row;
     padding: 10px;
     flex-wrap: wrap;
-    border: 2px solid #000;
     justify-content: space-around;
 }
 
-.flex-row img{
+.flex-row1, .flex-row2{
+    background:url("https://t3.ftcdn.net/jpg/03/25/38/64/360_F_325386410_7XLHgFBmPH10k0GCUXbikWCAeFFC8145.jpg");
+    color:#fff;
+}
+
+.flex-row1 div{
+    border: 2px solid #000;
+    flex: 1;
     padding: 10px;
+    height: 350px;
+    text-align: center;
+}
+.flex-row1 img{
+    width: 25%;
+    padding: 10px;
+}
+
+.flex-row2 button{
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.flex-row2 div{
+    border: 1px solid #000;
+}
+table, th, td    {
+    padding: 10px;
+    border: 1px solid #000;
+}
+.flex-rw img{
+    padding: 5px;
     margin: 5px;
     border: 1px solid red;
 }
-.flex-row div{
+.flex-rw div{
     padding:10px;
     border: 2px solid #000;
 }
@@ -61,3 +89,32 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+
+/* Back Jack */
+
+.bg{
+    background: url(../images/green-bg.jpg) no-repeat center ;
+    background-position: center;
+    background-size: contain;
+    
+}
+.rw{
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 5px solid red;
+}
+.cards{
+    padding-left:10px;
+}
+.cards img{
+    min-width:25%;
+}
+.rw div{
+    padding: 25px 5px;
+}
+
+/* BlackJack */

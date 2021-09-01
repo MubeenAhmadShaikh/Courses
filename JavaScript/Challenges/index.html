@@ -11,11 +11,11 @@
 <body>
     <div class="container">
         <h2>Challenge 1: Your Age in Days </h2>
-        <div class="flex-row">
+        <div class="flex-rw">
             <div><button onclick="ageIndays()" class="btn btn-primary">Click me</button></div>
             <div><button onclick="reset()" class="btn btn-danger">Reset</button></div>
         </div>
-        <div class="flex-row">
+        <div class="flex-rw">
             <div id="flex-res">
 
             </div>
@@ -23,13 +23,13 @@
     </div>
     <div class="container">
         <h2>Challenge 2 : Generator</h2>
-        <div class="flex-row">
+        <div class="flex-rw">
             <button onclick="generate()" class="btn btn-success">Generate</button>
             
         </div>
         
         
-        <div class="flex-row generator" id="cat-gen">
+        <div class="flex-rw generator" id="cat-gen">
 
         </div>
     </div>
@@ -45,8 +45,8 @@
     </div>
     <!-- Challenge 4  -->
     <div class="container">
-        <h2>Challenge 3 : Change the color of the buttons </h2>
-        <div class="flex-row">
+        <h2>Challenge 4 : Change the color of the buttons </h2>
+        <div class="flex-rw">
             <form action="">
                 <select name="colors" id="background" onchange="buttonColorChange(this)" id="">
                     <option value="random">Random</option>
@@ -65,6 +65,74 @@
         </div>
         
     </div>
-    <script src="static/js/script.js"></script>
+
+    <!-- Challenge 5: BlackJack -->
+    <!-- <div class="container">
+        <h2>Challenge 5 : BlackJack </h2>
+        <h3>Let's Play</h3>
+        <div class="flex-column ">
+            <div class="flex-column bg"  style="background: url('/static/images/green-bg.jpg');">
+                <div class="rw">
+                    <div class="flex-row cards">
+                        <img src="/static/images/A.png" width="180" height="252" alt="">
+                        <img src="/static/images/A.png" alt="">
+                        <img src="/static/images/A.png" alt="">
+                    </div>
+                    <div class="flex-row cards">
+                        <img src="/static/images/A.png" width="180" height="252" alt="">
+                        <img src="/static/images/9.png" width="180" height="252"alt="">
+                        <img src="/static/images/7.png"width="180" height="252" alt="">
+                        
+                    </div>
+                </div>
+                <div >
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aspernatur fugit nobis expedita sapiente nam, suscipit quidem veniam porro dignissimos accusantium error eligendi at quis, facilis animi, placeat vitae praesentium.</p>
+                </div>
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aspernatur fugit nobis expedita sapiente nam, suscipit quidem veniam porro dignissimos accusantium error eligendi at quis, facilis animi, placeat vitae praesentium.</p>
+            </div>
+        </div>
+        
+    </div> -->
+        <div class="container">
+            <h2>Challenge : Black Jack</h2>
+            <h3><span id="black-jack-result">Let's Play</span></h3>  
+
+            <div class="flex-row1 ">
+                <div id="your-box">
+                    <h2>You : <span id="your-result">0</span></h2>
+                </div>
+
+                <div id="dealer-box">
+                    <h2>Dealer : <span id="dealer-result">0</span></h2>
+                </div>
+            </div>
+            <div class="flex-row2">
+                <div>
+                    <button class="btn-lg btn-primary mr-2"  id="hit-button">Hit</button>
+                    <button class="btn-lg btn-warning mr-2" id="stand-button">Stand</button>
+                    <button class="btn-lg btn-danger" id="deal-button">Deal</button>
+                </div>
+
+            </div>
+            <div class="flex-row3">
+                <table>
+                    <tr>
+                        <th>Wins</th>
+                        <th>Loses</th>
+                        <th>Draws</th>
+                    </tr>
+                    <tr>
+                        <td><span id="wins">0</span></td>
+                        <td><span id="loses">0</span></td>
+                        <td><span id="draws">0</span></td>
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+ 
+    <script src="static/js/script.js" defer></script>
 </body>
 </html>
