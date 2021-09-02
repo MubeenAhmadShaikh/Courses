@@ -337,15 +337,21 @@ let BlackJackGame = {
     'dealer':{'scoreSpan' : '#dealer-result','div':'#dealer-box','score':0},
     'cards' : ['2','3','4','5','6','7','8','9','10','K','Q','J','A'],
     'cardsMap' : {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'K':10,'Q':10,'J':10,'A':[1,11]},
+    'wins' : 0,
+    'losses' : 0,
+    'draws' : 0,
 };
 
 const YOU = BlackJackGame['you'];
 const DEALER = BlackJackGame['dealer'];
 
 const hitSound=new Audio('static/sounds/swish.m4a');
+const winSound=new Audio('static/sounds/cash.mp3');
+const lostSound=new Audio('static/sounds/aww.mp3');
+const bustedSound=new Audio('static/sounds/busted.wav');
 
 document.querySelector('#hit-button').addEventListener('click',blackjackHit);
-document.querySelector('#stand-button').addEventListener('click',blackjackStand);
+document.querySelector('#stand-button').addEventListener('click',blackjackDealer);
 document.querySelector('#deal-button').addEventListener('click',blackjackDeal);
 
 
@@ -366,10 +372,6 @@ function blackjackHit(){
     showCard(cards,YOU);
     updateScore(cards,YOU);
     showScore(YOU);  
-};
-
-function blackjackStand(){
-    
 };
 
 
@@ -395,6 +397,7 @@ function updateScore(cards, activePlayer){
             else{
                 activePlayer['score'] += BlackJackGame['cardsMap'][cards][0];
             }
+            
     }
     else{    
         activePlayer['score'] += BlackJackGame['cardsMap'][cards];
@@ -414,6 +417,7 @@ function showScore(activePlayer){
 
 
 function blackjackDeal(){
+    
     let yourImages= document.querySelector('#your-box').querySelectorAll('img');
     let dealerImages= document.querySelector('#dealer-box').querySelectorAll('img');
     
@@ -431,6 +435,79 @@ function blackjackDeal(){
     document.querySelector(YOU['scoreSpan']).style.color='white'
     document.querySelector(DEALER['scoreSpan']).textContent = 0;
     document.querySelector(DEALER['scoreSpan']).style.color='white'
+    document.querySelector('#black-jack-result').textContent = "Let's Play";
+    document.querySelector('#black-jack-result').style.color = "black";
 }
 
 
+
+function blackjackDealer(){
+    let cards=randomCards();
+    showCard(cards,DEALER);
+    updateScore(cards,DEALER);
+    showScore(DEALER);
+
+    if(DEALER['score'] > 15){
+        let winner = computeWinner();
+        showResults(winner);
+    }
+};
+
+function computeWinner(){
+    let winner;
+    // If you have score less than or equal to 21 
+    if(YOU['score'] <=21 ){
+        if(YOU['score'] > DEALER['score'] || DEALER['score'] > 21){
+            BlackJackGame['wins']++;
+            winner = YOU;
+        }
+        else if(YOU['score'] < DEALER['score']){
+            BlackJackGame['losses']++;
+            console.log('You lost!');
+            winner= DEALER;
+        }
+        else if(YOU['score'] === DEALER['score']){
+            BlackJackGame['draws']++;
+            console.log('You drew!');
+        }
+        else if(YOU['score'] > 21 && DEALER['score'] > 21){
+            BlackJackGame['draws']++;
+            console.log('You Drew!');
+        }
+       
+    }
+    else if(YOU['score']>21 && DEALER['score']<=21){
+        BlackJackGame['losses']++;      
+        console.log('You Lost!');
+        winner= DEALER;
+    }
+
+    console.log('Winner is', winner);
+    return winner;
+}
+
+//To show the results
+function showResults(winner){
+    let message, messageColor;
+
+    if(winner === YOU){
+        document.querySelector('#wins').textContent=BlackJackGame['wins'];
+        message='You win!';
+        messageColor='green';
+        winSound.play();
+    }
+    else if(winner === DEALER){
+        document.querySelector('#loses').textContent=BlackJackGame['losses'];
+        message='You lost';
+        messageColor='red';
+        lostSound.play();
+    } else{
+        document.querySelector('#draws').textContent=BlackJackGame['draws'];
+        message='You drew!';
+        messageColor='blue';
+    }
+
+    document.querySelector('#black-jack-result').textContent = message;
+    document.querySelector('#black-jack-result').style.color = messageColor;
+    
+}
