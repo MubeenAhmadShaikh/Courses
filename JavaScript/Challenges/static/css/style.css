@@ -118,3 +118,45 @@ table, th, td    {
 }
 
 /* BlackJack */
+
+
+.conatiner-bj{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+}
+#blackjack-img{
+    width: 40%;
+    height: 50%;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.bg-green{
+    color: #fff;
+    background: url("https://i.pinimg.com/736x/9d/c1/b1/9dc1b1672ea26cd5711cfd394f73ab1b.jpg");
+}
+
+#your-box, #bot-box{
+    border: 2px solid #000;
+    flex: 1;
+    padding: 10px;
+    height: 350px;
+    text-align: center;
+}
+.flex-row button{
+    margin: 10px;
+    padding: 10px 15px ;
+}
+.flex-row img{
+    width: 25%;
+    padding: 20px 10px;
+}
