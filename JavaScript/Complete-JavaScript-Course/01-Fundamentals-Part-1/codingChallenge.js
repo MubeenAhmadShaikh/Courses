@@ -33,4 +33,13 @@ function calculateAverage(){
     }
     
 }
-console.log(calculateAverage());
+//console.log(calculateAverage());
+
+
+// Coding Challenge #4
+
+let bill=275;
+let tip=0;
+let finalBill = bill >= 50 && bill <= 300 ? 
+console.log(`The bill was ${bill}, the tip was ${(bill*15)/100}, and the total value is ${bill+(bill*15)/100}.`) :
+console.log(`The bill was ${bill}, the tip was ${(bill*20)/100}, and the total value is ${bill+(bill*20)/100}.`);
