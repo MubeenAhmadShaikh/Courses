@@ -27,15 +27,60 @@
 
 
 // Coding Challenge #2
-let tips=[];
-let total =[];
-const bills = [125,555,44];
-let calcTip = function (){
-    for(let i=0; i< bills.length; i++){
-        let tip = bills[i] >= 50 && bills[i] <= 300 ? bills[i]*0.15 : bills[i]*0.2;
-        tips.push(tip);
-        total.push(tip+bills[i]);
-        console.log(`Your bill is ${bills[i]} and after adding tip ${tip} your total will be ${total[i]} `)
-        }
+// let tips=[];
+// let total =[];
+// const bills = [125,555,44];
+// let calcTip = function (){
+//     for(let i=0; i< bills.length; i++){
+//         let tip = bills[i] >= 50 && bills[i] <= 300 ? bills[i]*0.15 : bills[i]*0.2;
+//         tips.push(tip);
+//         total.push(tip+bills[i]);
+//         console.log(`Your bill is ${bills[i]} and after adding tip ${tip} your total will be ${total[i]} `)
+//         }
+// }
+// calcTip();
+// -----Object methods------
+// const jonas = {
+//     firstName:'Jonas',
+//     lastName: 'Schemadment',
+//     birthYear:1991,
+//     job: 'teacher',
+//     friends: ['Michael','Peter','Steven'],
+//     hasDriversLicense: false,
+//     calcAge: function (){
+//         this.age = 2037 - this.birthYear;
+//         console.log(this.age)
+//         return this.age;
+//     },
+//     getSummary: function(){
+//         return `${this.firstName} is a ${this.calcAge()}-years old ${this.job}, and he has ${this.hasDriversLicense?'a':'no'} driver's license `
+//     }
+// }; 
+// let nameKey= 'Name';
+
+// // console.log(`${jonas['first'+nameKey]} has ${jonas.friends.length} friends, and his best friend  is ${jonas.friends[0]}`)
+// console.log(jonas.getSummary())
+
+
+// Coding Challenge #3
+
+const john={
+    fullName:'John Smith',
+    mass:'78',
+    height:'1.69',
+    calcBMI: function(){
+        return Math.floor(this.mass/this.height**2);
+    }
 }
-calcTip();
+
+const mark={
+    fullName:'Mark Killer',
+    mass:'92',
+    height:'1.95',
+    calcBMI: function(){
+        return Math.floor(this.mass/this.height**2);
+    }
+}
+
+console.log(`${john.fullName}'s BMI (${john.calcBMI()}) is ${john.calcBMI()>mark.calcBMI()?'higher':'lower'} than ${mark.fullName}'s (${mark.calcBMI()})`)
+
