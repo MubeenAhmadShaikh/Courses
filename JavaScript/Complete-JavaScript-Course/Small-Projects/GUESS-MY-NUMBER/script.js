@@ -8,7 +8,7 @@ let msg = document.querySelector('.message');
 let scoreElement = document.querySelector('.score');
 let highScoreElement = document.querySelector('.highscore');
 let guessElement = document.querySelector('.guess');
-
+let hiddenNumber = document.querySelector('.number');
 // Random number function
 let randomNumber = function () {
   return Math.floor(Math.random() * 21);
@@ -17,30 +17,34 @@ let randomNumber = function () {
 let score = 20;
 let highScore = 0;
 
+// Function to display messages
+function displayMessage(message) {
+  msg.textContent = message;
+}
+
 // Guess the number on click function
 function guessTheNumber() {
   let randNum = 5;
   console.log(randNum);
   let num = Number(document.querySelector('.guess').value);
+
   if (!num) {
-    msg.textContent = '⛔ No number';
+    displayMessage('⛔ No number');
   } else if (randNum === num) {
-    highScore = score;
-    highScoreElement.textContent = highScore;
-    msg.textContent = 'Correct Number🎊';
+    if (score > highScore) {
+      highScore = score;
+      highScoreElement.textContent = highScore;
+    }
+    displayMessage('Correct Number🎊');
     document.querySelector('.number').textContent = randNum;
     document.querySelector('body').style.backgroundColor = 'Green';
   } else {
     if (score > 1) {
       score--;
       scoreElement.textContent = score;
-      if (num < randNum) {
-        msg.textContent = 'Too Low 📉';
-      } else {
-        msg.textContent = 'Too High 📈';
-      }
+      displayMessage(num < randNum ? 'Too Low 📉' : 'Too High 📈');
     } else {
-      msg.textContent = 'You lost';
+      displayMessage('You lost');
       document.querySelector('.guess').style.display = 'none';
     }
   }
@@ -49,8 +53,10 @@ function guessTheNumber() {
 // Reset function for play again button
 function reset() {
   score = 20;
-  msg.textContent = 'Start guessing...';
+  displayMessage('Start guessing...');
   scoreElement.textContent = score;
   document.querySelector('body').style.backgroundColor = '#222';
   guessElement.value = '';
+  hiddenNumber.textContent = '?';
+  document.querySelector('.guess').style.display = 'block';
 }
