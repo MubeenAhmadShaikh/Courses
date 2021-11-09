@@ -24,7 +24,7 @@ function displayMessage(message) {
 
 // Guess the number on click function
 function guessTheNumber() {
-  let randNum = 5;
+  let randNum = randomNumber();
   console.log(randNum);
   let num = Number(document.querySelector('.guess').value);
 
