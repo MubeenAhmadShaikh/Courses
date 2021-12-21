@@ -57,7 +57,7 @@ function guessNumber() {
   } else {
     //Subtask 4.2
     displayMessage(`🎊 Right Guesses: ${guessCount}`);
-    checkBtn.classList.add('hidden');
+    guess.classList.add('hidden');
   }
 }
 
@@ -67,7 +67,7 @@ function reset() {
   hiddenNumber.textContent = '?';
   document.querySelector('body').style.backgroundColor = '#222';
   displayMessage('Start guessing....');
-  checkBtn.classList.remove('hidden');
+  guess.classList.remove('hidden');
   guess.value = '';
   guessCount = 0;
   scoreElement.textContent = 20;
